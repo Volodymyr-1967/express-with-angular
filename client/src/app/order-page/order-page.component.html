@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h1 class="head-order">Замовлення</h1>
+  <button routerLink="/order-editor" class="my-btn">Створити</button>
+
+<div *ngIf="orders$ | async as orders; else loader">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Номер замовлення</th>
+      <th>Ім'я</th>
+      <th>Телефон</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let order of orders">
+      <td>{{order.id}}</td>
+      <td>{{order.name}}</td>
+      <td>{{order.phone}}</td>
+      <td>
+        <button class="my-btn">Редагувати</button>
+        <button (click)="deleteOneOrder(order.id)" class="my-btn red">Видалити</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</div>
+
+
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
