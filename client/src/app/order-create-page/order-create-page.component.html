@@ -1,0 +1,66 @@
+<div class="form-container">
+
+  <div *ngIf="errorMessage">
+    <div class="form__error js-error" role="alert">
+      {{errorMessage}}
+    </div>
+  </div>
+
+  <div class="form-container__details">
+    <div class="form-container__title">Нове замовлення</div>
+    <div class="form-container__subtitle">
+      <a [routerLink]="['/my-order']">Повернутися на сторінку замовлень?</a>
+    </div>
+  </div>
+
+
+  <form class="form js-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form__field">
+      <div class="form__label">Ім'я</div>
+      <input
+        formControlName="name"
+        type="text"
+        id="name"
+        class="form-control form__input js-name-input"
+      />
+      <span
+        class="form__error"
+        *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+      >
+                <span *ngIf="form.get('name')?.errors!['required']">Ім'я не повинно бути порожнім</span>
+              </span>
+    </div>
+
+    <div class="form__field">
+      <div class="form__label">Телефон</div>
+      <input
+        formControlName="phone"
+        type="text"
+        class="form-control form__input js-name-input"
+      />
+      <span
+        class="form__error"
+        *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
+      >
+                <span *ngIf="form.get('phone')?.hasError('required')">Телефон не повинен бути порожнім</span>
+                <span *ngIf="form.get('phone')?.errors!['minlength']">Треба ввести не менше 10 цифр.
+                  Зараз кількість {{form.get('phone')?.errors!['minlength']['actualLength']}}</span>
+                </span>
+    </div>
+
+    <div class="text-center">
+      <button
+        class="form__submit"
+        type="submit"
+        [disabled]="form.invalid || form.disabled"
+      >
+        Зберегти
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+
