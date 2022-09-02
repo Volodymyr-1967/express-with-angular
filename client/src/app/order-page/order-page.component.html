@@ -1,10 +1,15 @@
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
+
 <div class="container">
 
   <h1 class="head-order">Замовлення</h1>
-  <button routerLink="/order-editor" class="my-btn">Створити</button>
+  <button routerLink="/order-create" class="my-btn">Створити через форму</button>
+  <button class="my-btn" (click)="addOrder()">Створити в таблиці</button>
 
-<div *ngIf="orders$ | async as orders; else loader">
-  <table class="table">
+  <table class="table" *ngIf="orders; else loader">
     <thead>
     <tr>
       <th>Номер замовлення</th>
@@ -16,23 +21,52 @@
     <tbody>
     <tr
       *ngFor="let order of orders">
-      <td>{{order.id}}</td>
-      <td>{{order.name}}</td>
-      <td>{{order.phone}}</td>
-      <td>
-        <button class="my-btn">Редагувати</button>
-        <button (click)="deleteOneOrder(order.id)" class="my-btn red">Видалити</button>
-      </td>
+      <ng-template [ngTemplateOutlet]="loadTemplate(order)"
+                   [ngTemplateOutletContext]="{$implicit: order}"
+      >
+      </ng-template>
     </tr>
     </tbody>
   </table>
+  <h4>{{statusMessage}}</h4>
+
+
+  <!--шаблон для чтения-->
+  <ng-template #readOnlyTemplate let-order>
+    <td>{{order.id}}</td>
+    <td>{{order.name}}</td>
+    <td>{{order.phone}}</td>
+    <td>
+      <input type="button" value="Редагувати" class="my-btn" (click)="editOrder(order)"/>
+      <input type="button" value="Видалити" (click)="deleteOneOrder(order)" class="my-btn red"/>
+    </td>
+  </ng-template>
+
+  <!--шаблон для редактирования-->
+  <ng-template #editTemplate>
+    <td>
+      <input
+        class="form-control form__input table js-name-input"
+        type="text"
+        [(ngModel)]="editedOrder!.id"
+        readonly disabled/>
+    </td>
+    <td>
+      <input
+        class="form-control form__input table js-name-input"
+        type="text"
+        [(ngModel)]="editedOrder!.name" />
+    </td>
+    <td>
+      <input
+        class="form-control form__input table js-name-input"
+        type="text"
+        [(ngModel)]="editedOrder!.phone"/>
+    </td>
+    <td>
+      <input type="button" value="Зберегти" (click)="saveOrder()" class="my-btn success"/>
+      <input type="button" value="Відміна" (click)="cancel()" class="my-btn cancel"/>
+    </td>
+  </ng-template>
+
 </div>
-
-
-</div>
-
-
-
-<ng-template #loader>
-  <app-loader></app-loader>
-</ng-template>

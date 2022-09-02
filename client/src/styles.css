@@ -1,5 +1,5 @@
 .container {
-  margin: 3rem 5rem;
+  margin: 3rem 7rem;
 }
 
 .head-order {
@@ -10,15 +10,16 @@
 .table {
   width: 100%;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid #dddddd;
   border-collapse: collapse;
   text-align: center;
 }
 
 .table th {
+  width: 20%;
   font-weight: bold;
-  padding: 5px;
+  padding: 15px;
   background: #efefef;
   border: 1px solid #dddddd;
 }
@@ -58,6 +59,19 @@
   background-color: #cb3636;
 }
 
+.my-btn.success {
+  color: #fff;
+  background-color: #54a65b;
+}
+
+.my-btn.cancel {
+  color: #fff;
+  background-color: #434d62;
+}
+
+
+
+
 .my-btn span {
   position: absolute;
   background: #fff;
@@ -76,6 +90,17 @@
   box-shadow: 0 1px 2px 0 rgb(230 41 41 / 45%), 0 1px 3px 1px rgb(230 41 41 / 30%);
   background-color: rgba(230, 41, 41, 0.86);
 }
+
+.my-btn:hover.success {
+  box-shadow: 0 1px 2px 0 rgb(103 194 111 / 45%), 0 1px 3px 1px rgb(103 194 111 / 30%);
+  background-color: rgba(103, 194, 111, 0.86);
+}
+
+.my-btn:hover.cancel {
+  box-shadow: 0 1px 2px 0 rgb(100 100 100 / 45%), 0 1px 3px 1px rgb(100 100 100 / 30%);
+  background-color: rgba(100, 100, 100, 0.86);
+}
+
 
 .my-btn:active {
   box-shadow: 0 1px 2px 0 rgb(26 115 232 / 45%), 0 2px 6px 2px rgb(26 115 232 / 30%);
@@ -99,7 +124,7 @@
   margin-right: auto;
   max-width: 400px;
   border-radius: 10px;
-  box-shadow: rgba(3, 3, 3, 0.1) 10px 0px 50px;
+  box-shadow: rgba(3, 3, 3, 0.1) 10px 0 50px;
 }
 
 .form-container__details {
@@ -130,29 +155,33 @@
 }
 
 .form__input {
-  width: 92%;
-  padding: 25px 15px;
-  border: 0;
+  width: 94%;
+  padding: 10px 10px;
   background: #f0f0f0;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 16px;
   color: #555;
   font-weight: 600;
   border: 1px solid #b3adac;
 }
 
+.form__input.table {
+  width: 60%;
+}
+
 .form__submit {
-  margin-top: 25px;
+  margin: 25px auto;
+  display: block;
   background: #037ef3;
   color: #fff;
   font-weight: 600;
-  width: 100%;
+  width: 50%;
   border-radius: 5px;
   cursor: pointer;
-  padding: 25px 15px;
+  padding: 15px 15px;
   border: 0;
   transition: all 0.8s;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .form__submit:hover {

@@ -22,11 +22,11 @@ export class DataService {
     return this.http.get<Order[]>('/api/my-order/');
   }
 
-  getOneOrder(): Observable<Order> {
-    return this.http.get<Order>('/api/my-order/:id');
+  getOneOrder(id: string): Observable<Order> {
+    return this.http.get<Order>(`/api/my-order/${id}`);
   }
 
-  editOrder(order: Order): Observable<{ order: Order }> {
+  updateOrder(order: Order): Observable<{ order: Order }> {
     return this.http.put<{ order: Order }>('/api/my-order/', order);
   }
 
