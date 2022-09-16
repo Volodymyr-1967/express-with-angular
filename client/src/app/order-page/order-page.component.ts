@@ -32,7 +32,6 @@ export class OrderPageComponent implements OnInit {
   private loadOrders() {
     this.dataService.getAllOrders().subscribe((data: Order[]) => {
       this.orders = data;
-      // console.log('Все заказы: ', this.orders);
     });
   }
 

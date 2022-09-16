@@ -38,7 +38,7 @@ class MyOrderController {
 
   updateOrder(req, res) {
     const {id, name, phone} = req.body;
-    pool.query(`UPDATE myOrder set name = $1, phone = $2 WHERE id = $3 RETURNING *`, [name, phone, id], (error, results) => {
+    pool.query(`UPDATE myOrder set name = $1, phone = $2 WHERE id = $3`, [name, phone, id], (error, results) => {
       if (error) {
         throw error;
       }
@@ -48,7 +48,7 @@ class MyOrderController {
 
   deleteOrder(req, res) {
     const id = req.params.id;
-    pool.query(`DELETE FROM myOrder where id = $1`, [id], (error, results) => {
+    pool.query(`DELETE FROM myOrder where id = $1`, [id], (error) => {
       if (error) {
         throw error;
       }

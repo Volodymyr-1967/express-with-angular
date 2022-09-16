@@ -13,6 +13,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { OrderStatisticsPageComponent } from './order-statistics-page/order-statistics-page.component';
 import { OrderCreatePageComponent } from './order-create-page/order-create-page.component';
+import { FocusDirective } from './shared/directives/focus.directive';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -25,6 +26,7 @@ registerLocaleData(localeRu, 'ru');
     LoaderComponent,
     OrderStatisticsPageComponent,
     OrderCreatePageComponent,
+    FocusDirective,
   ],
   imports: [
     BrowserModule,

@@ -55,13 +55,14 @@
       <input
         class="form-control form__input table js-name-input"
         type="text"
-        [(ngModel)]="editedOrder!.name" />
+        [(ngModel)]="editedOrder!.name"
+        appFocus />
     </td>
     <td>
       <input
         class="form-control form__input table js-name-input"
         type="text"
-        [(ngModel)]="editedOrder!.phone"/>
+        [(ngModel)]="editedOrder!.phone" />
     </td>
     <td>
       <input type="button" value="Зберегти" (click)="saveOrder()" class="my-btn success"/>
